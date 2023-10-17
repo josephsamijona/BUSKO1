@@ -17,7 +17,7 @@ class ToggleMenuApp(customtkinter.CTk):
         self.default_home()
         self.current_frame = None 
       #--------------image---------------------------------------- 
-        image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "png")
+        image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),"..", "..", "assets")
     
         self.logo_image = customtkinter.CTkImage(Image.open(os.path.join(image_path,"0.png")),size=(125,100))
         self.add = customtkinter.CTkImage(Image.open(os.path.join(image_path, "addd.png")), size=(35, 35))
@@ -64,7 +64,7 @@ class ToggleMenuApp(customtkinter.CTk):
     def create_toggle_button(self):
        # Create the main toggle button with the initial image and bind it to the toggle_win method
        # Load images for toggle button
-        image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "png")
+        image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "..", "assets")
         self.img1 = customtkinter.CTkImage(Image.open(os.path.join(image_path, "menue.png")), size=(35, 35))
         self.img2 = customtkinter.CTkImage(Image.open(os.path.join(image_path, "menue2.png")), size=(35, 35))
         
