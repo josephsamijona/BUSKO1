@@ -61,7 +61,14 @@ class LoginWindow(customtkinter.CTk):
         password = self.entry2.get()
 
         # Se connecter à la base de données SQLite
-        conn = sqlite3.connect("clinique.db")
+        # Obtenir le chemin absolu du répertoire "database" en utilisant os.path
+        database_dir = os.path.join(os.path.dirname(__file__), "..", "database")
+
+       # Spécifiez le chemin absolu de la base de données dans le dossier "database"
+        db_path = os.path.join(database_dir, "clinique.db")
+
+# Ouvrez la connexion vers la base de données
+        conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
         # Interroger la base de données pour vérifier si le nom d'utilisateur et le mot de passe sont valides
