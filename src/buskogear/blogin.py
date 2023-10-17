@@ -19,7 +19,12 @@ class LoginWindow(customtkinter.CTk):
         self.state('zoomed')
 
         # Créer une étiquette avec une image de fond
-        img1 = ImageTk.PhotoImage(Image.open("./assets/6881.jpg"))
+         # Obtenez le chemin absolu du répertoire "assets" en utilisant os.path
+        assets_dir = os.path.join(os.path.dirname(__file__), "..", "..", "assets")
+
+        # Spécifiez le chemin relatif de l'image à partir du répertoire "assets"
+        image_path = os.path.join(assets_dir, "6881.jpg")
+        img1 = ImageTk.PhotoImage(Image.open(image_path))
         self.l1 = customtkinter.CTkLabel(master=self, image=img1)
         self.l1.pack()
 
@@ -27,10 +32,9 @@ class LoginWindow(customtkinter.CTk):
         self.frame = customtkinter.CTkFrame(master=self.l1, width=520, height=560, corner_radius=0)
         self.frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
-        # Charger les images pour le mode clair et sombre
-        image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "assets")
+       
 
-        self.labo = customtkinter.CTkImage(Image.open(os.path.join(image_path, "0.png")), size=(125, 100))
+        self.labo = customtkinter.CTkImage(Image.open(os.path.join(assets_dir, "0.png")), size=(125, 100))
 
         # Placer l'image sur le cadre
         self.home_labo = customtkinter.CTkLabel(master=self.frame, text="", image=self.labo)
