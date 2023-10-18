@@ -1,6 +1,7 @@
 import tkinter as tk
 import sqlite3
 import customtkinter
+from alesembles import *
 import os
 from PIL import ImageTk, Image
 
@@ -53,8 +54,17 @@ class LoginWindow(customtkinter.CTk):
         # Créer un bouton de connexion
         self.button1 = customtkinter.CTkButton(master=self.frame, width=95, text="connexion", command=self.login)
         self.button1.place(x=205, y=400)
+     
+
+
+     
+
 
     # Définir la fonction de connexion
+
+
+
+
     def login(self):
         # Récupérer le nom d'utilisateur et le mot de passe depuis les champs
         username = self.entry1.get()
@@ -67,6 +77,8 @@ class LoginWindow(customtkinter.CTk):
        # Spécifiez le chemin absolu de la base de données dans le dossier "database"
         db_path = os.path.join(database_dir, "clinique.db")
 
+    
+
 # Ouvrez la connexion vers la base de données
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
@@ -78,17 +90,18 @@ class LoginWindow(customtkinter.CTk):
         conn.close()
 
         if user:
-            # Si le nom d'utilisateur et le mot de passe sont valides, créer une nouvelle fenêtre pour la page de bienvenue
-            w = customtkinter.CTk()
-            w.geometry("1280x720")
-            w.title("Welcome")
-            l1 = customtkinter.CTkLabel(master=w, text="Home Page", font=('Century Gothic', 60))
-            l1.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+           
+          # Appelez la fonction main() pour aller à la page principale
+          ToggleMenuApp()  # Si le nom d'utilisateur et le mot de passe sont valides, créer une nouvelle fenêtre pour la page de bienvenue
+
+         
+            
         else:
             # Afficher un message d'erreur en cas de connexion invalide
             error_label = customtkinter.CTkLabel(master=self.frame, text="Nom d'utilisateur ou mot de passe invalide", font=('Century Gothic', 12), fg_color='red')
             error_label.place(x=200, y=430)
-
+    
+     
 # Si vous souhaitez exécuter la fenêtre de connexion en tant qu'application autonome
 if __name__ == "__main__":
     login_window = LoginWindow()
